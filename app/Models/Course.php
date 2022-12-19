@@ -12,4 +12,9 @@ class Course extends Model
     protected $fillable = [
         'name', 'code'
     ];
+
+    public function getFullnameAttribute($value)
+    {
+        return $this->code . ' - ' . $this->name;
+    }
 }

@@ -3,6 +3,9 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\TermController;
+use App\Http\Controllers\CourseController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -13,7 +16,14 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+Route::group(['prefix' => 'v1'], function () {
+    Route::group(['prefix' => 'terms'], function () {
+        Route::get('/', [TermController::class, 'index']);
+        Route::get('/{term}', [TermController::class, 'show']);
+    });
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+    Route::group(['prefix' => 'courses'], function () {
+        Route::get('/', [CourseController::class, 'index']);
+        Route::get('/{course}', [CourseController::class, 'show']);
+    });
 });
