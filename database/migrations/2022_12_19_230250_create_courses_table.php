@@ -17,6 +17,7 @@ class CreateCoursesTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('code');
+            $table->integer('credits');
             $table->timestamps();
         });
     }

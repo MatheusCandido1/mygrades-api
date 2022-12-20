@@ -16,6 +16,8 @@ class CreateGradesTable extends Migration
         Schema::create('grades', function (Blueprint $table) {
             $table->id();
             $table->string('grade');
+            $table->string('points');
+            $table->string('gpa');
             $table->unsignedBigInteger('term_id');
             $table->unsignedBigInteger('course_id');
             $table->unsignedBigInteger('user_id');

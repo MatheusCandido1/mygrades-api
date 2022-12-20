@@ -10,7 +10,7 @@ class Course extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name', 'code'
+        'name', 'code', 'credits'
     ];
 
     public function getFullnameAttribute($value)

@@ -46,7 +46,11 @@ class GradeController extends Controller
             $grade->user_id = 1;
             $grade->course_id = $request->course_id;
             $grade->term_id = $request->term_id;
-            $grade->grade = $request->grade;
+            if(isset($request->points)) {
+                $grade->points = $request->points;
+            } else {
+                $grade->grade = $request->grade;
+            }
 
             $grade->save();
 

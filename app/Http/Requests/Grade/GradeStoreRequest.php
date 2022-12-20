@@ -28,7 +28,6 @@ class GradeStoreRequest extends FormRequest
         return [
             'course_id' => 'required|integer',
             'term_id' => 'required|integer',
-            'grade' => 'required|max:2'
         ];
     }
 
@@ -49,7 +48,6 @@ class GradeStoreRequest extends FormRequest
             'course_id.integer' => 'Course ID must be an integer',
             'term_id.required' => 'Term ID is required',
             'term_id.integer' => 'Term ID must be an integer',
-            'grade.required' => 'Grade is required'
         ];
     }
 }
