@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\TermController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\GradeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,5 +26,12 @@ Route::group(['prefix' => 'v1'], function () {
     Route::group(['prefix' => 'courses'], function () {
         Route::get('/', [CourseController::class, 'index']);
         Route::get('/{course}', [CourseController::class, 'show']);
+    });
+
+    Route::group(['prefix' => 'grades'], function () {
+        Route::get('/', [GradeController::class, 'index']);
+        Route::post('/', [GradeController::class, 'store']);
+        Route::patch('/{grade}', [GradeController::class, 'update']);
+        Route::get('/{grade}', [GradeController::class, 'show']);
     });
 });

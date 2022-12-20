@@ -12,4 +12,8 @@ class Term extends Model
     protected $fillable = [
         'name', 'start_date', 'end_date', 'status'
     ];
+
+    public function grades() {
+        return $this->hasMany('App\Models\Grade');
+    }
 }

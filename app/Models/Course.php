@@ -17,4 +17,8 @@ class Course extends Model
     {
         return $this->code . ' - ' . $this->name;
     }
+
+    public function grades() {
+        return $this->hasMany('App\Models\Grade');
+    }
 }
