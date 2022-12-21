@@ -13,6 +13,11 @@ use Illuminate\Support\Facades\DB;
 
 class GradeController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:api');
+    }
+
     public function index() {
         try {
             $grades = Grade::where('user_id',auth()->user()->id)->get();

@@ -11,6 +11,11 @@ use App\Http\Requests\User\LoginRequest;
 
 class AuthController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:api', ['except' => ['login','refresh']]);
+    }
+
     public function login(LoginRequest $request) {
         try {
 
@@ -52,12 +57,7 @@ class AuthController extends Controller
     public function refresh()
     {
         return response()->json([
-            'status' => 'success',
-            'user' => Auth::user(),
-            'authorization' => [
-                'token' => Auth::refresh(),
-                'type' => 'bearer',
-            ]
-        ]);
+            'token' => Auth::refresh(),
+        ], 201);
     }
 }
