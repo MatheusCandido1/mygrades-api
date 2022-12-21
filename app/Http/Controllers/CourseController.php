@@ -10,6 +10,11 @@ use App\Models\Course;
 
 class CourseController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:api');
+    }
+
     public function index()
     {
         try {

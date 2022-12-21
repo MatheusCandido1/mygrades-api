@@ -34,5 +34,12 @@ class Grade extends Model
         $this->attributes['gpa'] = Helper::getGPAFromGrade($value);
     }
 
+    /*protected static function booted()
+    {
+        static::created(function ($grade) {
+            $grade->user_id = auth()->user()->id;
+        });
+    } */
+
 
 }

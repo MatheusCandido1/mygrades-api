@@ -15,7 +15,7 @@ class GradeController extends Controller
 {
     public function index() {
         try {
-            $grades = Grade::all();
+            $grades = Grade::where('user_id',auth()->user()->id)->get();
 
             return GradeResource::collection($grades);
         } catch(\Exception $e) {
@@ -42,8 +42,6 @@ class GradeController extends Controller
             DB::beginTransaction();
 
             $grade = new Grade;
-
-            $grade->user_id = 1;
             $grade->course_id = $request->course_id;
             $grade->term_id = $request->term_id;
             if(isset($request->points)) {

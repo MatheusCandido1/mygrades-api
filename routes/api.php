@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TermController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\GradeController;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +19,11 @@ use App\Http\Controllers\GradeController;
 |
 */
 Route::group(['prefix' => 'v1'], function () {
+    Route::group(['prefix' => 'auth'], function () {
+        Route::post('/login', [AuthController::class, 'login']);
+        Route::post('/logout', [AuthController::class, 'logout']);
+    });
+
     Route::group(['prefix' => 'terms'], function () {
         Route::get('/', [TermController::class, 'index']);
         Route::get('/{term}', [TermController::class, 'show']);
