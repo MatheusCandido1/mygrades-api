@@ -25,7 +25,10 @@ class GradeResource extends JsonResource
             'term' => [
                 'name' => $this->term->name,
             ],
-            'grade' => $this->grade,
+            'results' => [
+                'grade' => $this->grade,
+                'points' => $this->points,
+            ],
         ];
     }
 }
